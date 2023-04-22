@@ -35,14 +35,14 @@ const taskSchema = Schema(
     },
     priority: {
       type: String,
-        enum: ["Low", "Medium", "High"],
-        default: "High",
-        trim: true
+      enum: ['Low', 'Medium', 'High'],
+      default: 'High',
+      trim: true,
     },
     category: {
       type: String,
-        enum: ["To do", "In progress", "Done"],
-        trim: true
+      enum: ['To do', 'In progress', 'Done'],
+      trim: true,
     },
     owner: {
       type: Schema.Types.ObjectId,
@@ -53,6 +53,6 @@ const taskSchema = Schema(
   { versionKey: false, timestamps: true }
 );
 
-const Task = model('contact', taskSchema);
+const Task = model('task', taskSchema);
 
 module.exports = Task;
