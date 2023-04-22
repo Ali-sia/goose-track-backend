@@ -21,10 +21,20 @@ const userSchema = Schema(
       required: [true, 'Email is required'],
       unique: true,
     },
-    subscription: {
+    avatar: {
       type: String,
-      enum: ['starter', 'pro', 'business'],
-      default: 'starter',
+      // required: true
+    },
+    phone: {
+      type: Number,
+      // required: true
+    },
+    birthday: {
+      type: Date,
+    },
+    telegram: {
+      type: String,
+      // required: true
     },
     token: { type: String, default: null },
   },

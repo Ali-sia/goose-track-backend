@@ -5,13 +5,12 @@ const { userRegisterValidator } = require('../../utils');
 const { User } = require('../../models');
 
 const register = catchAsync(async (req, res, next) => {
-  const { name, email, password, subscription } = req.body;
+  const { name, email, password } = req.body;
 
   const { error } = userRegisterValidator({
     name,
     email,
     password,
-    subscription,
   });
   if (error) {
     throw createError(400, error.message);
@@ -23,14 +22,19 @@ const register = catchAsync(async (req, res, next) => {
     throw createError(409, `User with email ${email} already exist`);
   }
 
-  const newUser = await User.create({ name, email, password, subscription });
+  const newUser = await User.create({ name, email, password });
 
   newUser.password = undefined;
 
   res.status(201).json({
     status: 'added',
     code: 201,
-    data: { user: { email, subscription: subscription || 'starter' } },
+    data: {
+      user: {
+        name,
+        email
+      }
+    },
   });
 });
 

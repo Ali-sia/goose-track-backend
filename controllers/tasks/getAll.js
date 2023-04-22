@@ -11,7 +11,7 @@ const getAll = catchAsync(async (req, res, next) => {
 
   const skip = (page - 1) * limit;
 
-  const contactsList = await Tast.find({
+  const contactsList = await Task.find({
     owner: _id,
     favorite: favorite || { $in: [true, false] },
   })

@@ -1,14 +1,18 @@
 const { catchAsync } = require('../../utils');
 
 const current = catchAsync(async (req, res, next) => {
-  const { email, subscription } = req.user;
+  const { name, email, avatar, birthday, phone, telegram } = req.user;
   res.json({
     status: 'success',
     code: 200,
     data: {
       user: {
+        name,
         email,
-        subscription,
+        avatar,
+        birthday,
+        phone, 
+        telegram
       },
     },
   });
