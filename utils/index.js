@@ -2,7 +2,7 @@ const catchAsync = require('./catchAsync');
 const {
   contactDataValidator,
   updateContactStatusValidator,
-} = require('./contactValidation');
+} = require('./ContactValidation');
 const {
   userLoginValidator,
   userRegisterValidator,
