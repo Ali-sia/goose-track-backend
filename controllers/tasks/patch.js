@@ -6,7 +6,7 @@ const createError = require('http-errors');
 const { Task } = require('../../models/index');
 const { catchAsync } = require('../../utils/index');
 
-const { contactDataValidator } = require('../../utils/contactValidation');
+const { contactDataValidator } = require('../../utils/index');
 
 const patchTask = catchAsync(async (req, res, next) => {
   const { contactId } = req.params;
