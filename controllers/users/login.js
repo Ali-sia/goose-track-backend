@@ -35,7 +35,7 @@ const login = catchAsync(async (req, res, next) => {
     data: {
       user: {
         email: user.email,
-        subscription: user.subscription,
+        // subscription: user.subscription,
       },
     },
   });
