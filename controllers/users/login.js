@@ -34,8 +34,8 @@ const login = catchAsync(async (req, res, next) => {
     token,
     data: {
       user: {
+        name: user.name,
         email: user.email,
-        // subscription: user.subscription,
       },
     },
   });

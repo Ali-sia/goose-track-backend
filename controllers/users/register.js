@@ -19,7 +19,7 @@ const register = catchAsync(async (req, res, next) => {
     throw createError(400, error.message);
   }
 
-  // check if entered email alreaddy exists
+  // check if entered email already exists
   const user = await User.findOne({ email });
   if (user) {
     throw createError(409, `User with email ${email} already exist`);
@@ -38,8 +38,8 @@ const register = catchAsync(async (req, res, next) => {
     data: {
       user: {
         name,
-        email
-      }
+        email,
+      },
     },
   });
 });
