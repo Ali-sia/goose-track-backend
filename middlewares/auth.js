@@ -20,12 +20,15 @@ const auth = catchAsync(async (req, res, next) => {
     return next(createError(401, 'Not authorized'));
   }
 
-  const currentUser = await User.findById(decoded.id);
+  const currentUser = await User.findOne({ email: decoded.email });
+  // const currentUser = await User.findById(decoded.id);
   if (!currentUser) return next(createError(401, 'Not authorized'));
 
   if (currentUser.token == null) {
     return next(createError(401, 'Not authorized'));
   }
+
+  currentUser.password = undefined;
 
   req.user = currentUser;
 
