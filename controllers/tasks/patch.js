@@ -10,7 +10,7 @@ const { contactDataValidator } = require('../../utils/index');
 
 const patchTask = catchAsync(async (req, res, next) => {
   const { contactId } = req.params;
-  const { name, email, phone } = req.body;
+  const { title, start, end, priority } = req.body;
   const { _id } = req.user;
 
   const { error } = contactDataValidator(req.body);
@@ -18,7 +18,7 @@ const patchTask = catchAsync(async (req, res, next) => {
     throw createError(400, error.message);
   }
 
-  if (!name || !email || !phone) {
+  if (!title || !start || !end || !priority) {
     throw createError(400, 'missing field');
   }
 
@@ -31,10 +31,12 @@ const patchTask = catchAsync(async (req, res, next) => {
     _id
   );
 
+  
+  
   if (!result) {
     throw createError(404, 'Not found');
   }
-
+console.log('result ==>', !result)
   res.json({
     status: 'success',
     code: 200,
@@ -44,3 +46,4 @@ const patchTask = catchAsync(async (req, res, next) => {
 });
 
 module.exports = patchTask;
+
