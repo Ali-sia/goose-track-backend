@@ -11,7 +11,7 @@ router.post('/', auth, ctrl.postTask);
 // router.use("/:contactId", checkContactId);
 
 router.get('/:contactId', auth, ctrl.getById);
-router.put('/:contactId', auth, ctrl.patchTask);
+router.patch('/:contactId', auth, ctrl.patchTask);
 router.delete('/:contactId', auth, ctrl.deleteById);
 
 module.exports = router;

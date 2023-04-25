@@ -7,28 +7,14 @@ const { Schema, model } = require('mongoose');
 // це залишила, щоб працювало
 const taskSchema = Schema(
   {
-    name: {
-      type: String,
-      required: [true, 'Set name for contact'],
-    },
-    email: {
-      type: String,
-    },
-    phone: {
-      type: String,
-    },
-    favorite: {
-      type: Boolean,
-      default: false,
-    },
     title: {
       type: String,
     },
+    type: String,
     start: {
-      type: Date,
     },
     end: {
-      type: Date,
+      type: String,
     },
     date: {
       type: Date,
@@ -56,3 +42,4 @@ const taskSchema = Schema(
 const Task = model('task', taskSchema);
 
 module.exports = Task;
+
