@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const contactDataValidator = (data) => {
+const taskDataValidator = (data) => {
   const schema = Joi.object({
     title: Joi.string().trim().min(3).max(30).required(),
     start: Joi.string().required(),
@@ -20,7 +20,7 @@ const contactDataValidator = (data) => {
 // };
 
 module.exports = {
-  contactDataValidator,
+  taskDataValidator,
   // updateContactStatusValidator
 };
 

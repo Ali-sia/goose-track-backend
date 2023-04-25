@@ -16,7 +16,7 @@ const getById = catchAsync(async (req, res, next) => {
   );
 
   if (!result) {
-    throw createError(404, `Contact with id ${contactId} not found`);
+    throw createError(404, `Task with id ${contactId} not found`);
   }
 
   res.json({
