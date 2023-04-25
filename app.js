@@ -1,6 +1,28 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
+const swarrerUI = require("swagger-ui-express");
+const swaggerJsdoc = require("swagger-jsdoc");
+
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Goose Track",
+      version: "1.0.0",
+      description: "App for tracking registered users tasks",
+    },
+    servers: [
+      {
+        url: "http://localhost:3000",
+        description: "Development server",
+      },
+    ],
+  },
+  apis: ["./src/routes/api/*.js"], // files containing annotations as above
+};
+
+const openapiSpecification = swaggerJsdoc(options);
 
 require("dotenv").config();
 
@@ -18,6 +40,8 @@ app.use(express.static("public"));
 
 app.use("/api/users", usersRouter);
 app.use("/api/contacts", tasksRouter);
+
+app.use("/api-docs", swarrerUI.serve, swarrerUI.setup(openapiSpecification));
 
 app.use((req, res) => {
   res.status(404).json({ message: "404 - Not found" });
