@@ -1,12 +1,16 @@
-const catchAsync = require('./catchAsync');
+const catchAsync = require("./catchAsync");
 const {
+
   taskDataValidator,
   // updateContactStatusValidator,
 } = require('./ContactValidation');
+
 const {
   userLoginValidator,
   userRegisterValidator,
-} = require('./userValidation');
+  userUpdateValidator,
+} = require("./userValidation");
+const upload = require("./upload");
 // const userLoginValidator = require("./userValidation");
 
 module.exports = {
@@ -15,4 +19,6 @@ module.exports = {
   // updateContactStatusValidator,
   userRegisterValidator,
   userLoginValidator,
+  userUpdateValidator,
+  upload,
 };
