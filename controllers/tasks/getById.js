@@ -7,16 +7,16 @@ const createError = require('http-errors');
 const { catchAsync } = require('../../utils/index');
 
 const getById = catchAsync(async (req, res, next) => {
-  const { contactId } = req.params;
+  const { taskId } = req.params;
   const { _id } = req.user;
 
-  const result = await Task.findById(contactId, _id).populate(
+  const result = await Task.findById(taskId, _id).populate(
     'owner',
     '_id name email'
   );
 
   if (!result) {
-    throw createError(404, `Task with id ${contactId} not found`);
+    throw createError(404, `Task with id ${taskId} not found`);
   }
 
   res.json({
@@ -27,4 +27,3 @@ const getById = catchAsync(async (req, res, next) => {
 });
 
 module.exports = getById;
-

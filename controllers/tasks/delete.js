@@ -7,10 +7,10 @@ const { Task } = require('../../models/index');
 const { catchAsync } = require('../../utils/index');
 
 const deleteById = catchAsync(async (req, res, next) => {
-  const { contactId } = req.params;
+  const { taskId } = req.params;
   const { _id } = req.user;
 
-  const result = await Task.findByIdAndDelete(contactId, _id);
+  const result = await Task.findByIdAndDelete(taskId, _id);
 
   if (!result) {
     throw createError(404, 'Not found');
