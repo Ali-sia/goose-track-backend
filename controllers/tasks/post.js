@@ -6,18 +6,18 @@ const createError = require('http-errors');
 const { Task } = require('../../models/index');
 const { catchAsync } = require('../../utils/index');
 
-const { contactDataValidator } = require('../../utils/index');
+const { taskDataValidator } = require('../../utils/index');
 
 const postTask = catchAsync(async (req, res, next) => {
   const { _id } = req.user;
-  const { name, email, phone } = req.body;
+  const { title, start, end, priority } = req.body;
 
-  const { error } = contactDataValidator(req.body);
+  const { error } = taskDataValidator(req.body);
   if (error) {
     throw createError(400, error.message);
   }
 
-  if (!name || !email || !phone) {
+  if (!title || !start || !end || !priority) {
     throw createError(400, 'missing required name field');
   }
 
@@ -31,3 +31,4 @@ const postTask = catchAsync(async (req, res, next) => {
 });
 
 module.exports = postTask;
+
