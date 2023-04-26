@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const tasksRouter = require('./routes/api/tasks');
 const usersRouter = require('./routes/api/users');
+const columnsRouter = require('./routes/api/columns');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.static('public'));
 
 app.use('/api/users', usersRouter);
 app.use('/api/tasks', tasksRouter);
+app.use('/api/columns', columnsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: '404 - Not found' });

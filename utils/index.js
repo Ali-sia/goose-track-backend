@@ -13,6 +13,8 @@ const {
 const upload = require("./upload");
 // const userLoginValidator = require("./userValidation");
 
+const { columnValidator } = require('./columnValidation');
+
 module.exports = {
   catchAsync,
   taskDataValidator,
@@ -21,4 +23,5 @@ module.exports = {
   userLoginValidator,
   userUpdateValidator,
   upload,
+  columnValidator,
 };
