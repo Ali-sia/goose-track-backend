@@ -9,7 +9,7 @@ const { catchAsync } = require('../../utils/index');
 const { taskDataValidator } = require('../../utils/index');
 
 const patchTask = catchAsync(async (req, res, next) => {
-  const { contactId } = req.params;
+  const { taskId } = req.params;
   const { title, start, end, priority } = req.body;
   const { _id } = req.user;
 
@@ -23,7 +23,7 @@ const patchTask = catchAsync(async (req, res, next) => {
   }
 
   const result = await Task.findByIdAndUpdate(
-    contactId,
+    taskId,
     req.body,
     {
       new: true,
@@ -31,12 +31,10 @@ const patchTask = catchAsync(async (req, res, next) => {
     _id
   );
 
-  
-  
   if (!result) {
     throw createError(404, 'Not found');
   }
-console.log('result ==>', !result)
+  console.log('result ==>', !result);
   res.json({
     status: 'success',
     code: 200,
@@ -46,4 +44,3 @@ console.log('result ==>', !result)
 });
 
 module.exports = patchTask;
-
