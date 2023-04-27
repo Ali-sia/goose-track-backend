@@ -23,18 +23,19 @@ const userSchema = Schema(
     },
     avatarURL: {
       type: String,
-      // required: true
+      default: "",
     },
     phone: {
       type: String,
-      // required: true
+      default: "",
     },
     birthday: {
       type: Date,
+      default: null,
     },
     telegram: {
       type: String,
-      // required: true
+      default: "",
     },
     token: { type: String, default: null },
   },
