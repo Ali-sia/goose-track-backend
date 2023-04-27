@@ -23,10 +23,10 @@ const userUpdateValidator = (data) => {
   const schema = Joi.object({
     name: Joi.string().min(3).max(30),
     email: Joi.string().email({ minDomainSegments: 2 }),
-    phone: Joi.string().min(3).max(30),
-    birthday: Joi.date().raw(),
-    telegram: Joi.string().min(3).max(30),
-    avatarURL: Joi.string(),
+    phone: Joi.string().min(3).max(30).allow(""),
+    birthday: Joi.date().raw().allow(null),
+    telegram: Joi.string().min(3).max(30).allow(""),
+    avatarURL: Joi.string().allow(""),
   });
 
   return schema.validate(data);
