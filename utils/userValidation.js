@@ -24,7 +24,7 @@ const userUpdateValidator = (data) => {
     name: Joi.string().min(3).max(30),
     email: Joi.string().email({ minDomainSegments: 2 }),
     phone: Joi.string().min(3).max(30).allow(""),
-    birthday: Joi.date().allow(null),
+    birthday: Joi.date().allow(""),
     telegram: Joi.string().min(3).max(30).allow(""),
     avatarURL: Joi.string().allow(""),
   });
