@@ -10,8 +10,8 @@ const taskSchema = Schema(
     title: {
       type: String,
     },
-    type: String,
     start: {
+          type: String,
     },
     end: {
       type: String,

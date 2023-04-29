@@ -69,7 +69,11 @@ const update = catchAsync(async (req, res, next) => {
     ).select("name birthday email phone telegram avatarURL");
 
     res.json({
-      user: updatedUser,
+      status: "success",
+      code: 200,
+      data: {
+        user: updatedUser,
+      },
     });
   } catch (error) {
     if (!tempUpload) {
