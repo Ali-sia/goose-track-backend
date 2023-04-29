@@ -20,30 +20,27 @@ const register = catchAsync(async (req, res, next) => {
   }
 
   // check if entered email already exists
-  const user = await User.findOne({ email });
-  if (user) {
+  const userBD = await User.findOne({ email });
+  if (userBD) {
     throw createError(409, `User with email ${email} already exist`);
   }
 
-  const newUser = await User.create({ name, email, password });
-  console.log('---> ~ register ~ newUser:', newUser);
+  await User.create({ name, email, password });
 
-  newUser.password = undefined;
-
-  const createdUser = await User.findOne({ email });
-  const payload = { id: createdUser._id };
+  const user = await User.findOne({ email });
+  const payload = { id: user._id };
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '1d' });
-  await User.findByIdAndUpdate(createdUser._id, { token });
+  await User.findByIdAndUpdate(user._id, { token });
+
+  user.password = undefined;
+  user.token = undefined;
 
   res.status(201).json({
     status: 'added',
     code: 201,
     token,
     data: {
-      user: {
-        name,
-        email,
-      },
+      user,
     },
   });
 });
