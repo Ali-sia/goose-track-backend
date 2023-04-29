@@ -2,10 +2,11 @@ const express = require('express');
 
 const { tasks: ctrl } = require('../../controllers');
 const { auth } = require('../../middlewares');
+const validateRequest = require('../../middlewares/tasks/validateRequestData');
 
 const router = express.Router();
 
-router.get('/', auth, ctrl.getAll);
+router.get('/', auth, validateRequest, ctrl.getAll);
 router.post('/', auth, ctrl.postTask);
 
 // router.use("/:contactId", checkContactId);

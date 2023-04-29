@@ -1,9 +1,6 @@
 const catchAsync = require("./catchAsync");
-const {
-
-  taskDataValidator,
-  // updateContactStatusValidator,
-} = require('./ContactValidation');
+const { columnValidator } = require('./columnValidation');
+const { taskDataValidator } = require("./taskValidation");
 
 const {
   userLoginValidator,
@@ -13,7 +10,6 @@ const {
 const upload = require("./upload");
 // const userLoginValidator = require("./userValidation");
 
-const { columnValidator } = require('./columnValidation');
 
 module.exports = {
   catchAsync,
