@@ -28,15 +28,14 @@ const login = catchAsync(async (req, res, next) => {
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '1d' });
   await User.findByIdAndUpdate(user._id, { token });
 
+  user.password = undefined;
+
   res.status(200).json({
     status: 'ok',
     code: 201,
     token,
     data: {
-      user: {
-        name: user.name,
-        email: user.email,
-      },
+      user,
     },
   });
 });
