@@ -1,16 +1,11 @@
-// #TODO
-// change controller for goose track`s needs
-
 const createError = require('http-errors');
-
 const { Task } = require('../../models/index');
 const { catchAsync } = require('../../utils/index');
-
 const { taskDataValidator } = require('../../utils/index');
 
 const patchTask = catchAsync(async (req, res, next) => {
   const { taskId } = req.params;
-  const { title, start, end, priority } = req.body;
+  const { title, start, end, priority, date } = req.body;
   const { _id } = req.user;
 
   const { error } = taskDataValidator(req.body);
@@ -34,7 +29,6 @@ const patchTask = catchAsync(async (req, res, next) => {
   if (!result) {
     throw createError(404, 'Not found');
   }
-  console.log('result ==>', !result);
   res.json({
     status: 'success',
     code: 200,
