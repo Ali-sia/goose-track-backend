@@ -2,11 +2,12 @@ const Joi = require('joi');
 
 const taskDataValidator = (data) => {
   const schema = Joi.object({
-    title: Joi.string().trim().min(3).max(30).required(),
-    start: Joi.string().required(),
-    end: Joi.string().required(),
-    date: Joi.date().iso().required(),
-    priority: Joi.string().required(),
+    title: Joi.string().trim().min(3).max(30),
+    start: Joi.string(),
+    end: Joi.string(),
+    date: Joi.date().iso(),
+    priority: Joi.string(),
+    category: Joi.string(),
   });
 
   return schema.validate(data);

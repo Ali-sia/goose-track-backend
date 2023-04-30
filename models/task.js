@@ -9,6 +9,7 @@ const taskSchema = Schema(
   {
     title: {
       type: String,
+      defaulf: 'Title'
     },
     start: {
           type: String,
@@ -18,6 +19,7 @@ const taskSchema = Schema(
     },
     date: {
       type: Date,
+      default: new Date(),
     },
     priority: {
       type: String,

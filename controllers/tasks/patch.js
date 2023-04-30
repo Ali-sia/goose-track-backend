@@ -5,7 +5,7 @@ const { taskDataValidator } = require('../../utils/index');
 
 const patchTask = catchAsync(async (req, res, next) => {
   const { taskId } = req.params;
-  const { title, start, end, priority, date } = req.body;
+  const { title, start, end, priority, category, date } = req.body;
   const { _id } = req.user;
 
   const { error } = taskDataValidator(req.body);
