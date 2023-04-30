@@ -21,19 +21,24 @@ const taskSchema = Schema(
     },
     priority: {
       type: String,
-      enum: ['Low', 'Medium', 'High'],
-      default: 'High',
+      enum: ['low', 'medium', 'high'],
+      default: 'high',
       trim: true,
     },
     category: {
       type: String,
       enum: ['To do', 'In progress', 'Done'],
       trim: true,
+      default: 'To do',
     },
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'user',
       required: true,
+    },
+     description: {
+       type: String,
+       default:""
     },
   },
   { versionKey: false, timestamps: true }
