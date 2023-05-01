@@ -21,11 +21,11 @@ const userLoginValidator = (data) => {
 
 const userUpdateValidator = (data) => {
   const schema = Joi.object({
-    name: Joi.string().min(3).max(30),
+    name: Joi.string().min(3).max(16),
     email: Joi.string().email({ minDomainSegments: 2 }),
-    phone: Joi.string().min(3).max(30).allow(""),
+    phone: Joi.string().min(3).max(16).allow(""),
     birthday: Joi.date().allow(""),
-    telegram: Joi.string().min(3).max(30).allow(""),
+    telegram: Joi.string().min(3).max(16).allow(""),
     avatarURL: Joi.string().allow(""),
   });
 

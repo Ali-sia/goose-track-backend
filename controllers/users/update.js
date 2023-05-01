@@ -48,6 +48,10 @@ const update = catchAsync(async (req, res, next) => {
       const cloudinaryUpload = await cloudinary.uploader.upload(tempUpload, {
         public_id: avatarName,
         folder: "public/avatars",
+        crop: "fill",
+        width: 200,
+        height: 200,
+        gravity: "face",
       });
 
       await fs.unlink(tempUpload);
