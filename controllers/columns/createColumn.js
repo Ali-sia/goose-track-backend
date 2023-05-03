@@ -7,14 +7,14 @@ const { columnValidator } = require('../../utils/index');
 
 const createColumn = catchAsync(async (req, res, next) => {
   const { _id } = req.user;
-  const { title, number } = req.body;
+  const { title, number, date } = req.body;
 
   const { error } = columnValidator(req.body);
   if (error) {
     throw createError(400, error.message);
   }
 
-  if (!title || !number) {
+  if (!title || !number ) {
     throw createError(400, 'missing required name field');
   }
 
