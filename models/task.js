@@ -40,7 +40,7 @@ const taskSchema = Schema(
     },
      description: {
        type: String,
-       default:""
+       default:"",
     },
   },
   { versionKey: false, timestamps: true }
