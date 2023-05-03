@@ -8,6 +8,7 @@ const taskDataValidator = (data) => {
     date: Joi.date().iso(),
     priority: Joi.string(),
     category: Joi.string(),
+     description: Joi.string().allow(null).allow(''),
   });
 
   return schema.validate(data);
