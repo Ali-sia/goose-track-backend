@@ -13,6 +13,10 @@ const columnSchema = Schema(
       ref: 'user',
       required: true,
     },
+    date: {
+      type: Date,
+      default: new Date(),
+    },
   },
   { versionKey: false, timestamps: true }
 );
