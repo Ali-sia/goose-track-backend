@@ -29,9 +29,7 @@ const taskSchema = Schema(
     },
     category: {
       type: String,
-      enum: ['To do', 'In progress', 'Done'],
       trim: true,
-      default: 'To do',
     },
     owner: {
       type: Schema.Types.ObjectId,
